@@ -1,0 +1,24 @@
+{
+    "help_strings": {
+        "help_title": "Help is here!",
+        "help_desc": "Displays general help or specific command help.\n\nArguments enclosed by '<>' define __**optional**__ arguments.\nArguments enclosed by '[]' define __**required**__ arguments.\n\nFor a command list, use `%prefix%commands` .\n\nUsage: `%prefix%help <command>` .",
+        "ping_title": "Just a normal ping command.",
+        "ping_desc": "Usage: `%prefix%ping`.",
+        "color_title": "Your own color role, like rainbow!",
+        "color_desc": "Creates your own color role! Don't specify a color code for a random color!\n\nRequirements: Administrator permission or a role named 'Color'.\n\nUsage: `%prefix%color <hex color code>`.",
+        "animal_title": "Cats, Dogs and Foxes. What is more adorable than that?",
+        "animal_desc": "Gives you a random image of a cat, dog or fox.\n\nUsage: `%prefix%cat/dog/fox`."
+    },
+
+    "command_strings": {
+        "command_title": "Command List.",
+        "command_desc": "Displays a list of all commands.",
+        "utility_title": "1. Utility",
+        "utility_desc": "color",
+        "image_title": "2. Image",
+        "image_desc": "cat, dog, fox",
+        "misc_title": "3. Misc",
+        "misc_desc": "ping, help"
+    }
+
+}
