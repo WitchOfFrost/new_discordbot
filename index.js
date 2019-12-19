@@ -52,8 +52,9 @@ dc_client.on('message', async dc_msg => {
             break;
 
         case `${config.bot_config.prefix}speedrun`:
-            obj_sub = { dc_args: dc_args, dc_msg: dc_msg }
-            module_index.speedrun_loader.speedrun(obj_sub)
+            //obj_sub = { dc_args: dc_args, dc_msg: dc_msg }
+            //module_index.speedrun_loader.speedrun(obj_sub)
+            dc_msg.channel.send("Not yet rewrote, use !speedrun.")
             break;
 
         case (`${config.bot_config.prefix}neko`):
