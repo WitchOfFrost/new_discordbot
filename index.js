@@ -67,6 +67,7 @@ dc_client.on('message', async dc_msg => {
         case (`${config.bot_config.prefix}wallpaper`):
         case (`${config.bot_config.prefix}gecg`):
         case (`${config.bot_config.prefix}8ball`):
+        case (`${config.bot_config.prefix}slap`):
             obj_sub = { dc_args: dc_args, dc_msg: dc_msg }
             module_index.image_loader.neko(obj_sub)
             break;
