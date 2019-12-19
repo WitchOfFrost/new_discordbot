@@ -71,7 +71,7 @@ module.exports.neko = async function(obj_sub) {
             break;
 
         case (obj_sub.dc_args[0] = `${config.bot_config.prefix}slap`):
-            neko_embed_data.embed.image.url = await module_index.globalfunctions_loader.animal_api("https://api.i-love-catgirls.de/v1/media/8ball", "image").catch(err => { console.log(err) })
+            neko_embed_data.embed.image.url = await module_index.globalfunctions_loader.animal_api("https://api.i-love-catgirls.de/v1/media/slap", "image").catch(err => { console.log(err) })
             break;
     };
     obj_sub.dc_msg.channel.send(neko_embed_data).catch(err => { console.log(err) })
