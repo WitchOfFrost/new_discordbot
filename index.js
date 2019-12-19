@@ -50,6 +50,27 @@ dc_client.on('message', async dc_msg => {
             obj_sub = { dc_args: dc_args, dc_msg: dc_msg }
             module_index.image_loader.animals(obj_sub)
             break;
+
+        case `${config.bot_config.prefix}speedrun`:
+            obj_sub = { dc_args: dc_args, dc_msg: dc_msg }
+            module_index.speedrun_loader.speedrun(obj_sub)
+            break;
+
+        case (`${config.bot_config.prefix}neko`):
+        case (`${config.bot_config.prefix}hug`):
+        case (`${config.bot_config.prefix}fluff`):
+        case (`${config.bot_config.prefix}wag`):
+        case (`${config.bot_config.prefix}kiss`):
+        case (`${config.bot_config.prefix}pat`):
+        case (`${config.bot_config.prefix}cuddle`):
+        case (`${config.bot_config.prefix}poke`):
+        case (`${config.bot_config.prefix}wallpaper`):
+        case (`${config.bot_config.prefix}gecg`):
+        case (`${config.bot_config.prefix}8ball`):
+            obj_sub = { dc_args: dc_args, dc_msg: dc_msg }
+            module_index.image_loader.neko(obj_sub)
+            break;
+
     };
 
 

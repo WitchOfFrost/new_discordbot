@@ -39,6 +39,24 @@ module.exports.help = async function(obj_sub) {
                 }
             }
             break;
+        case (`neko`):
+        case (`hug`):
+        case (`fluff`):
+        case (`wag`):
+        case (`kiss`):
+        case (`pat`):
+        case (`cuddle`):
+        case (`poke`):
+        case (`wallpaper`):
+        case (`gecg`):
+        case (`8ball`):
+            embed_data_help = {
+                embed: {
+                    title: strings.help_strings.neko_title,
+                    description: module_index.globalfunctions_loader.str_replace("%prefix%", config.bot_config.prefix, strings.help_strings.neko_desc)
+                }
+            }
+            break;
     };
     obj_sub.dc_msg.channel.send(embed_data_help);
 };
