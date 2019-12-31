@@ -76,3 +76,18 @@ module.exports.neko = async function(obj_sub) {
     };
     obj_sub.dc_msg.channel.send(neko_embed_data).catch(err => { console.log(err) })
 };
+
+module.exports.lewdneko = async function(obj_sub) {
+    let neko_embed_data = { embed: { author: { name: obj_sub.dc_msg.author.tag, icon_url: obj_sub.dc_msg.author.avatarURL }, image: {} } }
+    if (obj_sub.dc_msg.channel.nsfw) {
+        switch (obj_sub.dc_args[0]) {
+            case (obj_sub.dc_args[0] = `${config.bot_config.prefix}suck`):
+                neko_embed_data.embed.image.url = await module_index.globalfunctions_loader.animal_api("https://api.i-love-catgirls.de/v1/media/suck", "image").catch(err => { console.log(err) })
+                break;
+        }
+        obj_sub.dc_msg.channel.send(neko_embed_data).catch(err => { console.log(err) });
+    } else {
+        obj_sub.dc_msg.channel.send("This channel has to be NSFW!")
+    }
+
+}

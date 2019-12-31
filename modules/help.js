@@ -57,6 +57,14 @@ module.exports.help = async function(obj_sub) {
                 }
             }
             break;
+        case (`suck`):
+            embed_data_help = {
+                embed: {
+                    title: strings.help_strings.lewdneko_title,
+                    description: module_index.globalfunctions_loader.str_replace("%prefix%", config.bot_config.prefix, strings.help_strings.lewdneko_desc)
+                }
+            }
+            break;
     };
     obj_sub.dc_msg.channel.send(embed_data_help);
 };
@@ -73,6 +81,10 @@ module.exports.commands = async function(obj_sub) {
                 {
                     name: strings.command_strings.image_title,
                     value: strings.command_strings.image_desc
+                },
+                {
+                    name: strings.command_strings.nsfw_title,
+                    value: strings.command_strings.nsfw_desc
                 },
                 {
                     name: strings.command_strings.misc_title,

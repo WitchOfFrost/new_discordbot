@@ -9,7 +9,9 @@
         "animal_title": "Cats, Dogs and Foxes. What is more adorable than that?",
         "animal_desc": "Gives you a random image of a cat, dog or fox.\n\nUsage: `%prefix%cat/dog/fox`.",
         "neko_title": "The great catgirl api, basically nekos.life but self hosted.",
-        "neko_desc": "Gives you a random image containing whatever the command says.\n\nUsage: `%prefix%neko/hug/fluff/wag/kiss/pat/cuddle/poke/wallpaper/gecg/8ball`."
+        "neko_desc": "Gives you a random image containing whatever the command says.\n\nUsage: `%prefix%neko/hug/fluff/wag/kiss/pat/cuddle/poke/wallpaper/gecg/8ball`.",
+        "lewdneko_title": "The great nsfw catgirl api, basically nekos.life but self hosted.",
+        "lewdneko_desc": "Gives you a random image containing whatever the command says.\n\nUsage: `%prefix%suck`."
     },
 
     "command_strings": {
@@ -19,7 +21,9 @@
         "utility_desc": "color",
         "image_title": "2. Image",
         "image_desc": "cat, dog, fox, neko, hug, fluff, wag, kiss, pat, cuddle, poke, wallpaper, gecg, 8ball, slap",
-        "misc_title": "3. Misc",
+        "nsfw_title": "3. NSFW",
+        "nsfw_desc": "suck",
+        "misc_title": "4. Misc",
         "misc_desc": "ping, help"
     }
 
