@@ -1,4 +1,5 @@
-const strings = require('./../strings.json');
+const json_reload = require('self-reload-json');
+var strings = new json_reload("./strings.json");
 const config = require('./../config.json');
 const module_index = require("./../module_index.js")
 
