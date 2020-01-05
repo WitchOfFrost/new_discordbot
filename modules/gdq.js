@@ -1,7 +1,6 @@
-const json_reload = require('self-reload-json');
-var schedule = new json_reload('./gdq.json');
 const config = require('./../config.json');
-const module_index = require("./../module_index.js");
+const axios = require('axios')
+const fs = require('fs')
 
 module.exports.main = async function(obj_sub) {
 
@@ -9,8 +8,12 @@ module.exports.main = async function(obj_sub) {
         case (obj_sub.dc_args[1] = `next`):
             next(obj_sub);
             break;
-        case (obj_sub.dc_args[1] = `schedule`):
-            schedule(obj_sub);
+        case (obj_sub.dc_args[1] = `current`):
+        case (obj_sub.dc_args[1] = `now`):
+            current(obj_sub);
+            break;
+        case (obj_sub.dc_args[1] = `previous`):
+            previous(obj_sub);
             break;
         case (obj_sub.dc_args[1] = undefined):
             undefined_func(obj_sub);
@@ -19,73 +22,107 @@ module.exports.main = async function(obj_sub) {
     };
 
     async function next(obj_sub) {
-        let get_date = new Date().toLocaleTimeString()
+        let api = await axios.get("https://horaro.org/-/api/v1/events/agdq/schedules/2020/ticker")
+        if (api.data.data.ticker.next == null) {
+            obj_sub.dc_msg.channel.send({
+                embed: {
+                    title: "Event Concluded!",
+                    description: `The event has concluded.`,
+                    color: 44783,
+                    thumbnail: {
+                        url: "https://respek.de/umi.png"
+                    },
+                    footer: {
+                        text: "Awesome Games Done Quick 2020 | 05.01 - 12.01"
+                    },
+                }
+            })
+        } else {
+            obj_sub.dc_msg.channel.send({
+                embed: {
+                    title: "Next up:",
+                    description: `**${api.data.data.ticker.next.data[0]} | ${api.data.data.ticker.next.data[3]}**\n\n\n**Start Time:** ${new Date(api.data.data.ticker.next.scheduled).toLocaleString()}\n\n**Length:** ${api.data.data.ticker.next.data[2]}\n\n**Setup:** ${api.data.data.ticker.next.data[5]}\n\n**Runner:** ${api.data.data.ticker.next.data[1]}\n\n**Host:** ${api.data.data.ticker.next.data[4]}`,
+                    color: 44783,
+                    thumbnail: {
+                        url: "https://respek.de/umi.png"
+                    },
+                    footer: {
+                        text: "Awesome Games Done Quick 2020 | 05.01 - 12.01"
+                    },
+                }
+            })
+        }
 
-        await Object.keys(schedule.agdq2020).some(async key => {
-            let parsed_date = await new Date(key)
-            parsed_date = await parsed_date.setDate(parsed_date.getDate())
-            if (parsed_date < get_date) {} else {
-                await Object.keys(schedule.agdq2020[key]).some(async key1 => {
-                    let time_hr = await get_date.toString().slice(16, 18)
-                    let time_min = await get_date.toString().slice(19, 21)
-                    if (time_hr < key1.slice(0, 2)) {
-                        if (time_min < key1.slice(3, 5)) {
-                            obj_sub.dc_msg.channel.send({
-                                embed: {
-                                    title: "Next up:",
-                                    description: `**${schedule.agdq2020[key][key1].title}**\n\n\n**Start Time:** ${key1.slice(0, 2)}:${key1.slice(3, 5)}\n\n**Length:** ${schedule.agdq2020[key][key1].length}\n\n**Setup:** ${schedule.agdq2020[key][key1].setup}\n\n**Runner:** ${schedule.agdq2020[key][key1].runner}\n\n**Host:** ${schedule.agdq2020[key][key1].host}`,
-                                    color: 44783,
-                                    thumbnail: {
-                                        url: "https://respek.de/umi.png"
-                                    },
-                                    footer: {
-                                        text: "Awesome Games Done Quick 2020 | 05.01 - 12.01"
-                                    },
-                                }
-                            })
-                            return;
-                        } else {}
-                    } else {}
-                })
-                return;
+    }
+}
+
+async function current(obj_sub) {
+    let api = await axios.get("https://horaro.org/-/api/v1/events/agdq/schedules/2020/ticker")
+    if (api.data.data.ticker.current == null) {
+        obj_sub.dc_msg.channel.send({
+            embed: {
+                title: "Event has not Started!",
+                description: `The event has not yet started.`,
+                color: 44783,
+                thumbnail: {
+                    url: "https://respek.de/umi.png"
+                },
+                footer: {
+                    text: "Awesome Games Done Quick 2020 | 05.01 - 12.01"
+                },
+            }
+        })
+    } else {
+        obj_sub.dc_msg.channel.send({
+            embed: {
+                title: "Current event:",
+                description: `**${api.data.data.ticker.current.data[0]} | ${api.data.data.ticker.current.data[3]}**\n\n\n**Start Time:** ${new Date(api.data.data.ticker.current.scheduled).toLocaleString()}\n\n**Length:** ${api.data.data.ticker.current.data[2]}\n\n**Setup:** ${api.data.data.ticker.current.data[5]}\n\n**Runner:** ${api.data.data.ticker.current.data[1]}\n\n**Host:** ${api.data.data.ticker.current.data[4]}`,
+                color: 44783,
+                thumbnail: {
+                    url: "https://respek.de/umi.png"
+                },
+                footer: {
+                    text: "Awesome Games Done Quick 2020 | 05.01 - 12.01"
+                },
             }
         })
     }
-};
+}
 
-async function schedule(obj_sub) {
-    let get_date = new Date().toLocaleTimeString()
+async function previous(obj_sub) {
+    let api = await axios.get("https://horaro.org/-/api/v1/events/agdq/schedules/2020/ticker")
+    if (api.data.data.ticker.previous == null) {
+        obj_sub.dc_msg.channel.send({
+            embed: {
+                title: "No previous record!",
+                description: `There was nothing before this!`,
+                color: 44783,
+                thumbnail: {
+                    url: "https://respek.de/umi.png"
+                },
+                footer: {
+                    text: "Awesome Games Done Quick 2020 | 05.01 - 12.01"
+                },
+            }
+        })
+    } else {
+        obj_sub.dc_msg.channel.send({
+            embed: {
+                title: "Next up:",
+                description: `**${api.data.data.ticker.previous.data[0]} | ${api.data.data.ticker.previous.data[3]}**\n\n\n**Start Time:** ${new Date(api.data.data.ticker.previous.scheduled).toLocaleString()}\n\n**Length:** ${api.data.data.ticker.previous.data[2]}\n\n**Setup:** ${api.data.data.ticker.previous.data[5]}\n\n**Runner:** ${api.data.data.ticker.previous.data[1]}\n\n**Host:** ${api.data.data.ticker.previous.data[4]}`,
+                color: 44783,
+                thumbnail: {
+                    url: "https://respek.de/umi.png"
+                },
+                footer: {
+                    text: "Awesome Games Done Quick 2020 | 05.01 - 12.01"
+                },
+            }
+        })
+    }
+}
 
-    await Object.keys(schedule.agdq2020).some(async key => {
-        let parsed_date = await new Date(key)
-        parsed_date = await parsed_date.setDate(parsed_date.getDate())
-        if (parsed_date < get_date) {} else {
-            await Object.keys(schedule.agdq2020[key]).some(async key1 => {
-                let time_hr = await get_date.toString().slice(16, 18)
-                let time_min = await get_date.toString().slice(19, 21)
-                if (time_hr < key1.slice(0, 2)) {
-                    if (time_min < key1.slice(3, 5)) {
-                        obj_sub.dc_msg.channel.send({
-                            embed: {
-                                title: "Next up:",
-                                description: `**${schedule.agdq2020[key][key1].title}**\n\n\n**Start Time:** ${key1.slice(0, 2)}:${key1.slice(3, 5)}\n\n**Length:** ${schedule.agdq2020[key][key1].length}\n\n**Setup:** ${schedule.agdq2020[key][key1].setup}\n\n**Runner:** ${schedule.agdq2020[key][key1].runner}\n\n**Host:** ${schedule.agdq2020[key][key1].host}`,
-                                color: 44783,
-                                thumbnail: {
-                                    url: "https://respek.de/umi.png"
-                                },
-                                footer: {
-                                    text: "Awesome Games Done Quick 2020 | 05.01 - 12.01"
-                                },
-                            }
-                        })
-                        return;
-                    } else {}
-                } else {}
-            })
-            return;
-        }
-    })
-};
+
 
 async function undefined_func(obj_sub) {
     obj_sub.dc_msg.channel.send({
@@ -97,7 +134,7 @@ async function undefined_func(obj_sub) {
                 url: "https://respek.de/umi.png"
             },
             footer: {
-                text: "Awesome Games Done Quick 2020 | 05.01 - 12.01"
+                text: "Awesome Games Done Quick 2020 | 05.01 - 12.01 | "
             },
         }
     })
