@@ -31,10 +31,11 @@ module.exports.main = async function(obj_sub) {
                     description: `The event has concluded.`,
                     color: 44783,
                     thumbnail: {
-                        url: "https://respek.de/umi.png"
+                        url: "https://respek.de/gfg.png"
                     },
                     footer: {
-                        text: "Awesome Games Done Quick 2020 | 05.01 - 12.01"
+                        text: "Awesome Games Done Quick 2020 | 05.01 - 12.01",
+                        icon_url: "https://respek.de/umi.png"
                     },
                 }
             })
@@ -45,10 +46,11 @@ module.exports.main = async function(obj_sub) {
                     description: `**${api.data.data.ticker.next.data[0]} | ${api.data.data.ticker.next.data[3]}**\n\n\n**Start Time:** ${new Date(api.data.data.ticker.next.scheduled).toLocaleString()}\n\n**Length:** ${api.data.data.ticker.next.data[2]}\n\n**Setup:** ${api.data.data.ticker.next.data[5]}\n\n**Runner:** ${api.data.data.ticker.next.data[1]}\n\n**Host:** ${api.data.data.ticker.next.data[4]}`,
                     color: 44783,
                     thumbnail: {
-                        url: "https://respek.de/umi.png"
+                        url: "https://respek.de/gfg.png"
                     },
                     footer: {
-                        text: "Awesome Games Done Quick 2020 | 05.01 - 12.01"
+                        text: "Awesome Games Done Quick 2020 | 05.01 - 12.01",
+                        icon_url: "https://respek.de/umi.png"
                     },
                 }
             })
@@ -66,10 +68,11 @@ async function current(obj_sub) {
                 description: `The event has not yet started.`,
                 color: 44783,
                 thumbnail: {
-                    url: "https://respek.de/umi.png"
+                    url: "https://respek.de/gfg.png"
                 },
                 footer: {
-                    text: "Awesome Games Done Quick 2020 | 05.01 - 12.01"
+                    text: "Awesome Games Done Quick 2020 | 05.01 - 12.01",
+                    icon_url: "https://respek.de/umi.png"
                 },
             }
         })
@@ -80,10 +83,11 @@ async function current(obj_sub) {
                 description: `**${api.data.data.ticker.current.data[0]} | ${api.data.data.ticker.current.data[3]}**\n\n\n**Start Time:** ${new Date(api.data.data.ticker.current.scheduled).toLocaleString()}\n\n**Length:** ${api.data.data.ticker.current.data[2]}\n\n**Setup:** ${api.data.data.ticker.current.data[5]}\n\n**Runner:** ${api.data.data.ticker.current.data[1]}\n\n**Host:** ${api.data.data.ticker.current.data[4]}`,
                 color: 44783,
                 thumbnail: {
-                    url: "https://respek.de/umi.png"
+                    url: "https://respek.de/gfg.png"
                 },
                 footer: {
-                    text: "Awesome Games Done Quick 2020 | 05.01 - 12.01"
+                    text: "Awesome Games Done Quick 2020 | 05.01 - 12.01",
+                    icon_url: "https://respek.de/umi.png"
                 },
             }
         })
@@ -99,10 +103,11 @@ async function previous(obj_sub) {
                 description: `There was nothing before this!`,
                 color: 44783,
                 thumbnail: {
-                    url: "https://respek.de/umi.png"
+                    url: "https://respek.de/gfg.png"
                 },
                 footer: {
-                    text: "Awesome Games Done Quick 2020 | 05.01 - 12.01"
+                    text: "Awesome Games Done Quick 2020 | 05.01 - 12.01",
+                    icon_url: "https://respek.de/umi.png"
                 },
             }
         })
@@ -113,10 +118,11 @@ async function previous(obj_sub) {
                 description: `**${api.data.data.ticker.previous.data[0]} | ${api.data.data.ticker.previous.data[3]}**\n\n\n**Start Time:** ${new Date(api.data.data.ticker.previous.scheduled).toLocaleString()}\n\n**Length:** ${api.data.data.ticker.previous.data[2]}\n\n**Setup:** ${api.data.data.ticker.previous.data[5]}\n\n**Runner:** ${api.data.data.ticker.previous.data[1]}\n\n**Host:** ${api.data.data.ticker.previous.data[4]}`,
                 color: 44783,
                 thumbnail: {
-                    url: "https://respek.de/umi.png"
+                    url: "https://respek.de/gfg.png"
                 },
                 footer: {
-                    text: "Awesome Games Done Quick 2020 | 05.01 - 12.01"
+                    text: "Awesome Games Done Quick 2020 | 05.01 - 12.01",
+                    icon_url: "https://respek.de/umi.png"
                 },
             }
         })
@@ -132,10 +138,11 @@ async function schedule(obj_sub) {
                 description: `The event has not yet started.\n\n**Searching for the full schedule? You can find it __[HERE](https://gamesdonequick.com/schedule)__**.`,
                 color: 44783,
                 thumbnail: {
-                    url: "https://respek.de/umi.png"
+                    url: "https://respek.de/gfg.png"
                 },
                 footer: {
-                    text: "Awesome Games Done Quick 2020 | 05.01 - 12.01"
+                    text: "Awesome Games Done Quick 2020 | 05.01 - 12.01",
+                    icon_url: "https://respek.de/umi.png"
                 },
             }
         })
@@ -146,10 +153,11 @@ async function schedule(obj_sub) {
                 description: `**${api.data.data.ticker.current.data[0]} | ${api.data.data.ticker.current.data[3]}**\n\n\n**Start Time:** ${new Date(api.data.data.ticker.current.scheduled).toLocaleString()}\n\n**Length:** ${api.data.data.ticker.current.data[2]}\n\n**Setup:** ${api.data.data.ticker.current.data[5]}\n\n**Runner:** ${api.data.data.ticker.current.data[1]}\n\n**Host:** ${api.data.data.ticker.current.data[4]}\n\n**Searching for the full schedule? You can find it __[HERE](https://gamesdonequick.com/schedule)__**.`,
                 color: 44783,
                 thumbnail: {
-                    url: "https://respek.de/umi.png"
+                    url: "https://respek.de/gfg.png"
                 },
                 footer: {
-                    text: "Awesome Games Done Quick 2020 | 05.01 - 12.01"
+                    text: "Awesome Games Done Quick 2020 | 05.01 - 12.01",
+                    icon_url: "https://respek.de/umi.png"
                 },
             }
         })
