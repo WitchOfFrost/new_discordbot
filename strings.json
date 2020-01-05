@@ -13,7 +13,7 @@
         "lewdneko_title": "The great nsfw catgirl api, basically nekos.life but self hosted.",
         "lewdneko_desc": "Gives you a random image containing whatever the command says.\n\nUsage: `%prefix%suck`.",
         "agdq_title": "Commands for the Schedules of AGDQ & SGDQ.",
-        "agdq_desc": "Gives you information about the AGDQ/SGDQ schedule.\n\nUsage: `%prefix%agdq/sgdq [next/current/previous]`."
+        "agdq_desc": "Gives you information about the AGDQ/SGDQ schedule.\n\nUsage: `%prefix%agdq/sgdq [next/current/previous/schedule]`."
     },
 
     "command_strings": {
