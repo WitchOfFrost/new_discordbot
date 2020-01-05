@@ -12,6 +12,9 @@ module.exports.main = async function(obj_sub) {
         case (obj_sub.dc_args[1] = `schedule`):
             schedule(obj_sub);
             break;
+        case (obj_sub.dc_args[1] = undefined):
+            undefined_func(obj_sub);
+            break;
 
     };
 
@@ -80,6 +83,22 @@ async function schedule(obj_sub) {
                 } else {}
             })
             return;
+        }
+    })
+};
+
+async function undefined_func(obj_sub) {
+    obj_sub.dc_msg.channel.send({
+        embed: {
+            title: "Error: No argument given!",
+            description: 'For a list of arguments, use `' + config.bot_config.prefix + 'help agdq/sgdq`!',
+            color: 44783,
+            thumbnail: {
+                url: "https://respek.de/umi.png"
+            },
+            footer: {
+                text: "Awesome Games Done Quick 2020 | 05.01 - 12.01"
+            },
         }
     })
 };
