@@ -11,7 +11,9 @@
         "neko_title": "The great catgirl api, basically nekos.life but self hosted.",
         "neko_desc": "Gives you a random image containing whatever the command says.\n\nUsage: `%prefix%neko/hug/fluff/wag/kiss/pat/cuddle/poke/wallpaper/gecg/8ball`.",
         "lewdneko_title": "The great nsfw catgirl api, basically nekos.life but self hosted.",
-        "lewdneko_desc": "Gives you a random image containing whatever the command says.\n\nUsage: `%prefix%suck`."
+        "lewdneko_desc": "Gives you a random image containing whatever the command says.\n\nUsage: `%prefix%suck`.",
+        "agdq_title": "Commands for the Schedules of AGDQ & SGDQ.",
+        "agdq_desc": "Gives you information about the AGDQ/SGDQ schedule.\n\nUsage: `%prefix%agdq/sgdq [next]`."
     },
 
     "command_strings": {
@@ -24,7 +26,7 @@
         "nsfw_title": "3. NSFW",
         "nsfw_desc": "suck",
         "misc_title": "4. Misc",
-        "misc_desc": "ping, help"
+        "misc_desc": "ping, help, agdq/sgdq"
     }
 
 }

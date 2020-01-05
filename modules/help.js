@@ -66,6 +66,22 @@ module.exports.help = async function(obj_sub) {
                 }
             }
             break;
+        case (`agdq`):
+        case (`sgdq`):
+            embed_data_help = {
+                embed: {
+                    title: strings.help_strings.agdq_title,
+                    description: module_index.globalfunctions_loader.str_replace("%prefix%", config.bot_config.prefix, strings.help_strings.agdq_desc),
+                    color: 44783,
+                    thumbnail: {
+                        url: "https://respek.de/umi.png"
+                    },
+                    footer: {
+                        text: "Current event: AGDQ 2020."
+                    }
+                }
+            }
+            break;
     };
     obj_sub.dc_msg.channel.send(embed_data_help);
 };

@@ -77,7 +77,20 @@ dc_client.on('message', async dc_msg => {
             obj_sub = { dc_args: dc_args, dc_msg: dc_msg }
             module_index.image_loader.lewdneko(obj_sub)
             break;
+
+        case (`${config.bot_config.prefix}submit`):
+            obj_sub = { dc_args: dc_args, dc_msg: dc_msg }
+            module_index.api_submit_loader.submission(obj_sub)
+            break;
+
+        case (`${config.bot_config.prefix}agdq`):
+        case (`${config.bot_config.prefix}sgdq`):
+            obj_sub = { dc_args: dc_args, dc_msg: dc_msg }
+            module_index.gdq_loader.main(obj_sub)
+            break;
+
     };
+
 
 
 });
