@@ -35,7 +35,7 @@ module.exports.main = async function(obj_sub) {
                     },
                     footer: {
                         text: "Awesome Games Done Quick 2020 | 05.01 - 12.01",
-                        icon_url: "https://respek.de/umi.png"
+                        icon_url: "https://respek.de/j1V.png"
                     },
                 }
             })
@@ -50,7 +50,7 @@ module.exports.main = async function(obj_sub) {
                     },
                     footer: {
                         text: "Awesome Games Done Quick 2020 | 05.01 - 12.01",
-                        icon_url: "https://respek.de/umi.png"
+                        icon_url: "https://respek.de/j1V.png"
                     },
                 }
             })
@@ -72,7 +72,7 @@ async function current(obj_sub) {
                 },
                 footer: {
                     text: "Awesome Games Done Quick 2020 | 05.01 - 12.01",
-                    icon_url: "https://respek.de/umi.png"
+                    icon_url: "https://respek.de/j1V.png"
                 },
             }
         })
@@ -87,7 +87,7 @@ async function current(obj_sub) {
                 },
                 footer: {
                     text: "Awesome Games Done Quick 2020 | 05.01 - 12.01",
-                    icon_url: "https://respek.de/umi.png"
+                    icon_url: "https://respek.de/j1V.png"
                 },
             }
         })
@@ -107,7 +107,7 @@ async function previous(obj_sub) {
                 },
                 footer: {
                     text: "Awesome Games Done Quick 2020 | 05.01 - 12.01",
-                    icon_url: "https://respek.de/umi.png"
+                    icon_url: "https://respek.de/j1V.png"
                 },
             }
         })
@@ -122,7 +122,7 @@ async function previous(obj_sub) {
                 },
                 footer: {
                     text: "Awesome Games Done Quick 2020 | 05.01 - 12.01",
-                    icon_url: "https://respek.de/umi.png"
+                    icon_url: "https://respek.de/j1V.png"
                 },
             }
         })
@@ -142,7 +142,7 @@ async function schedule(obj_sub) {
                 },
                 footer: {
                     text: "Awesome Games Done Quick 2020 | 05.01 - 12.01",
-                    icon_url: "https://respek.de/umi.png"
+                    icon_url: "https://respek.de/j1V.png"
                 },
             }
         })
@@ -157,7 +157,7 @@ async function schedule(obj_sub) {
                 },
                 footer: {
                     text: "Awesome Games Done Quick 2020 | 05.01 - 12.01",
-                    icon_url: "https://respek.de/umi.png"
+                    icon_url: "https://respek.de/j1V.png"
                 },
             }
         })
