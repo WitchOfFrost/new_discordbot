@@ -28,13 +28,13 @@ module.exports.main = async function(obj_sub) {
             obj_sub.dc_msg.channel.send({
                 embed: {
                     title: "Event Concluded!",
-                    description: `The event has concluded.`,
+                    description: `The event has concluded. See you at SGDQ 2020!`,
                     color: 44783,
                     thumbnail: {
                         url: "https://respek.de/gfg.png"
                     },
                     footer: {
-                        text: "Awesome Games Done Quick 2020 | 05.01 - 12.01",
+                        text: "Summer Games Done Quick 2020 | 21.06 - 28.06",
                         icon_url: "https://respek.de/j1V.png"
                     },
                 }
@@ -64,14 +64,14 @@ async function current(obj_sub) {
     if (api.data.data.ticker.current == null) {
         obj_sub.dc_msg.channel.send({
             embed: {
-                title: "Event has not Started!",
-                description: `The event has not yet started.`,
+                title: "Event concluded!",
+                description: `The event has concluded. See you at SGDQ 2020!`,
                 color: 44783,
                 thumbnail: {
                     url: "https://respek.de/gfg.png"
                 },
                 footer: {
-                    text: "Awesome Games Done Quick 2020 | 05.01 - 12.01",
+                    text: "Summer Games Done Quick 2020 | 21.06 - 28.06",
                     icon_url: "https://respek.de/j1V.png"
                 },
             }
@@ -99,14 +99,14 @@ async function previous(obj_sub) {
     if (api.data.data.ticker.previous == null) {
         obj_sub.dc_msg.channel.send({
             embed: {
-                title: "No previous record!",
-                description: `There was nothing before this!`,
+                title: "The event has concluded!",
+                description: `See you at SGDQ 2020!`,
                 color: 44783,
                 thumbnail: {
                     url: "https://respek.de/gfg.png"
                 },
                 footer: {
-                    text: "Awesome Games Done Quick 2020 | 05.01 - 12.01",
+                    text: "Summer Games Done Quick 2020 | 21.06 - 28.06",
                     icon_url: "https://respek.de/j1V.png"
                 },
             }
@@ -134,14 +134,14 @@ async function schedule(obj_sub) {
     if (api.data.data.ticker.current == null) {
         obj_sub.dc_msg.channel.send({
             embed: {
-                title: "Event has not Started!",
-                description: `The event has not yet started.\n\n**Searching for the full schedule? You can find it __[HERE](https://gamesdonequick.com/schedule)__**.`,
+                title: "Event concluded!",
+                description: `The event has concluded. See you at SGDQ 2020!\n\n**Searching for the full schedule? You can find it __[HERE](https://gamesdonequick.com/schedule)__**.`,
                 color: 44783,
                 thumbnail: {
                     url: "https://respek.de/gfg.png"
                 },
                 footer: {
-                    text: "Awesome Games Done Quick 2020 | 05.01 - 12.01",
+                    text: "Summer Games Done Quick 2020 | 21.06 - 28.06",
                     icon_url: "https://respek.de/j1V.png"
                 },
             }
