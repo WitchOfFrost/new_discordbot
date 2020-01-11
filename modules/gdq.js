@@ -114,7 +114,7 @@ async function previous(obj_sub) {
     } else {
         obj_sub.dc_msg.channel.send({
             embed: {
-                title: "Next up:",
+                title: "Previous event:",
                 description: `**${api.data.data.ticker.previous.data[0]} | ${api.data.data.ticker.previous.data[3]}**\n\n\n**Start Time:** ${new Date(api.data.data.ticker.previous.scheduled).toLocaleString()}\n\n**Length:** ${api.data.data.ticker.previous.data[2]}\n\n**Setup:** ${api.data.data.ticker.previous.data[5]}\n\n**Runner:** ${api.data.data.ticker.previous.data[1]}\n\n**Host:** ${api.data.data.ticker.previous.data[4]}`,
                 color: 44783,
                 thumbnail: {
