@@ -89,6 +89,11 @@ dc_client.on('message', async dc_msg => {
             module_index.gdq_loader.main(obj_sub)
             break;
 
+        case (`${config.bot_config.prefix}spotify`):
+            obj_sub = { dc_args: dc_args, dc_msg: dc_msg }
+            module_index.spotify_loader.main(obj_sub)
+            break;
+
     };
 
 
