@@ -39,7 +39,7 @@ module.exports.main = async function(obj_sub) {
     switch (obj_sub.dc_args[1]) {
         case "search":
             obj_sub.start_arg = 2;
-            search_func(obj_sub);
+            await search_func(obj_sub);
             break;
 
         case undefined:
@@ -54,7 +54,7 @@ module.exports.main = async function(obj_sub) {
 
         default:
             obj_sub.start_arg = 1;
-            search_func(obj_sub);
+            await search_func(obj_sub);
             break;
     };
 
@@ -127,7 +127,7 @@ module.exports.main = async function(obj_sub) {
                 obj_sub.embed_data.embed.thumbnail.url = search_result[0].data.artists.items[0].images[0].url
                 obj_sub.embed_data.embed.description = obj_sub.field_data;
 
-                react_listener(obj_sub);
+                await react_listener(obj_sub);
             };
 
             async function playlist_field_creator(obj_sub) {
@@ -153,7 +153,7 @@ module.exports.main = async function(obj_sub) {
                 obj_sub.embed_data.embed.thumbnail.url = search_result[0].data.tracks.items[0].album.images[0].url
                 obj_sub.embed_data.embed.description = obj_sub.field_data;
 
-                react_listener(obj_sub);
+                await react_listener(obj_sub);
             };
 
             async function react_listener(obj_sub) {
@@ -177,27 +177,27 @@ module.exports.main = async function(obj_sub) {
                     return ['💿', '🎤', '🎵', '🗒️', '❌'].includes(reaction.emoji.name) && user.id === obj_sub.dc_msg.author.id;
                 }
 
-                sent_embed.createReactionCollector(reaction_filter, { time: 60000 })
+                sent_embed.createReactionCollector(reaction_filter, { time: 60000, max: 1 })
                     .on('collect', async user_reaction => {
                         switch (user_reaction.emoji.name) {
                             case '💿':
                                 content_type = "Album"
-                                message_creator(obj_sub)
+                                await message_creator(obj_sub)
                                 user_reaction.remove(obj_sub.dc_msg.author.id);
                                 break;
                             case '🎤':
                                 content_type = "Artist"
-                                message_creator(obj_sub)
+                                await message_creator(obj_sub)
                                 user_reaction.remove(obj_sub.dc_msg.author.id);
                                 break;
                             case '🎵':
                                 content_type = "Track"
-                                message_creator(obj_sub)
+                                await message_creator(obj_sub)
                                 user_reaction.remove(obj_sub.dc_msg.author.id);
                                 break;
                             case '🗒️':
                                 content_type = "Playlist"
-                                message_creator(obj_sub)
+                                await message_creator(obj_sub)
                                 user_reaction.remove(obj_sub.dc_msg.author.id);
                                 break;
                             case '❌':
@@ -209,6 +209,9 @@ module.exports.main = async function(obj_sub) {
 
             };
         };
-        message_creator()
+        if (i == 0) {
+            console.log("running meSsage")
+            message_creator()
+        }
     };
 };
