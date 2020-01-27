@@ -1,3 +1,6 @@
+const module_index = require('./../module_index.js')
+const axios = require('axios');
+
 module.exports.ping = function(obj_sub) {
 
     let ping_color;
@@ -44,4 +47,30 @@ module.exports.color = async function(obj_sub) {
             }
         } else { obj_sub.dc_msg.channel.send("You need either Administrator permission or a role named 'Color' to use the Color Command.") }
     } else { obj_sub.dc_msg.channel.send("I don't have Manage Roles permission!") }
+};
+
+module.exports.urban = async function(obj_sub) {
+    if (obj_sub.dc_args[1] == undefined) {
+        obj_sub.dc_msg.channel.send({ embed: { title: "An error occured!", description: `Missing Argument, please add a search term!`, color: 16741235 } });
+    } else {
+        let urban_response = await axios.get(`https://api.urbandictionary.com/v0/define?term=${obj_sub.dc_args.slice(2).join(" ")}`)
+            .catch(err => {
+                obj_sub.error_status = err.response.data.error.status;
+                obj_sub.error_message = err.response.data.error.message;
+                module_index.error_handler.main(obj_sub)
+                throw err;
+            });
+
+        if (urban_response.data.list[0].definition.length > 1000) {
+            var embed_data = { embed: { description: `**The definition is too big for Discord, check it out here: ${urban_response.data.list[0].permalink}**`, color: 16576515 } };
+
+        } else {
+            var embed_data = { embed: { title: `**${urban_response.data.list[0].word}**\n_by ${urban_response.data.list[0].author}_`, footer: { text: `👍 ${urban_response.data.list[0].thumbs_up} | 👎 ${urban_response.data.list[0].thumbs_down}` }, color: 16576515, fields: [{ name: "Definition", value: urban_response.data.list[0].definition }, { name: "Example", value: urban_response.data.list[0].example }] } }
+        }
+
+        obj_sub.dc_msg.channel.send(embed_data).catch(err => {
+            console.log(err);
+            obj_sub.dc_msg.channel.send("Something went wrong.")
+        });
+    };
 };
