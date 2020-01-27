@@ -61,9 +61,12 @@ module.exports.main = async function(obj_sub) {
     };
 
     async function search_func(obj_sub) {
-        let searches = [spotify_api.get(`search?q=${obj_sub.dc_args.slice(obj_sub.start_arg).join(" ")}&type=album,artist,playlist,track&limit=5`)]
+        let encode_uri = `search?q=` + obj_sub.dc_args.slice(obj_sub.start_arg).join(" ") + `&type=album,artist,playlist,track&limit=5`
+        let searches = [spotify_api.get(encodeURI(encode_uri))]
         let search_result = await Promise.all(searches)
             .catch(error => {
+                console.log(obj_sub.dc_msg)
+                console.log(error)
                 obj_sub.error_status = error.response.data.error.status;
                 obj_sub.error_message = error.response.data.error.message;
                 module_index.error_handler.main(obj_sub)
@@ -134,8 +137,10 @@ module.exports.main = async function(obj_sub) {
                     };
                 });
 
-                if (search_result[0].data.artists.items[0] == undefined) {
+                if (search_result[0].data.artists == undefined) {
                     obj_sub.field_data = "No results!";
+                    obj_sub.embed_data.embed.thumbnail.url = "https://emilia-tan.s-ul.eu/wEyFBMYi";
+                } else if (search_result[0].data.artists.items[0].images[0] == undefined) {
                     obj_sub.embed_data.embed.thumbnail.url = "https://emilia-tan.s-ul.eu/wEyFBMYi";
                 } else {
                     obj_sub.embed_data.embed.thumbnail.url = search_result[0].data.artists.items[0].images[0].url
