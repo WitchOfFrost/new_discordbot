@@ -82,6 +82,24 @@ module.exports.help = async function(obj_sub) {
                 }
             }
             break;
+        case (`urban`):
+            embed_data_help = {
+                embed: {
+                    title: strings.help_strings.urban_title,
+                    description: module_index.globalfunctions_loader.str_replace("%prefix%", config.bot_config.prefix, strings.help_strings.urban_desc),
+                    color: 16576515
+                }
+            }
+            break;
+        case (`spotify`):
+            embed_data_help = {
+                embed: {
+                    title: strings.help_strings.spotify_title,
+                    description: module_index.globalfunctions_loader.str_replace("%prefix%", config.bot_config.prefix, strings.help_strings.spotify_desc),
+                    color: 1947988
+                }
+            }
+            break;
     };
     obj_sub.dc_msg.channel.send(embed_data_help);
 };
