@@ -30,12 +30,14 @@ function refreshSpotifyToken() {
 };
 refreshSpotifyToken();
 
-let sent_embed
-let i = 0
+
 var spotify_token;
 spotify_api = axios.create({ baseURL: 'https://api.spotify.com/v1/', headers: { 'Authorization': 'Bearer ' + spotify_token }, json: true });
 
 module.exports.main = async function(obj_sub) {
+    let sent_embed
+    let i = 0
+
     switch (obj_sub.dc_args[1]) {
         case "search":
             obj_sub.start_arg = 2;
@@ -99,31 +101,25 @@ module.exports.main = async function(obj_sub) {
 
             async function album_field_creator(obj_sub) {
 
-                if (search_result[0].data.albums.items[0].images[0] == undefined) {
-                    obj_sub.image_switch = "https://emilia-tan.s-ul.eu/wEyFBMYi";
-                } else {
-                    obj_sub.image_switch = search_result[0].data.albums.items[0].images[0].url
-                }
-
                 obj_sub.field_data = ""
                 await search_result[0].data.albums.items.forEach((item, field_number) => {
                     if (field_number <= 5) {
                         obj_sub.field_data += `Name: ** ${item.name}** ✦ Artist: [** ${item.artists[0].name} **](${item.artists[0].external_urls.spotify}) ✦[** Album Link **](${item.artists[0].external_urls.spotify}) \n`
                     };
                 });
-                obj_sub.embed_data.embed.thumbnail.url = obj_sub.image_switch;
+
+                if (search_result[0].data.albums.items[0] == undefined) {
+                    obj_sub.field_data = "No results!";
+                    obj_sub.embed_data.embed.thumbnail.url = "https://emilia-tan.s-ul.eu/wEyFBMYi";
+                } else {
+                    obj_sub.embed_data.embed.thumbnail.url = search_result[0].data.albums.items[0].images[0].url
+                }
+
                 obj_sub.embed_data.embed.description = obj_sub.field_data;
                 react_listener(obj_sub);
             };
 
             async function artist_field_creator(obj_sub) {
-
-                if (search_result[0].data.artists.items[0].images[0] == undefined) {
-                    obj_sub.image_switch = "https://emilia-tan.s-ul.eu/wEyFBMYi";
-                } else {
-                    obj_sub.image_switch = search_result[0].data.artists.items[0].images[0].url
-                }
-
 
                 if (search_result[0].data.artists.genres == undefined) {
                     obj_sub.genres_switch = "n/a"
@@ -132,12 +128,19 @@ module.exports.main = async function(obj_sub) {
                 }
 
                 obj_sub.field_data = ""
-                await search_result[0].data.playlists.items.forEach((item, field_number) => {
+                await search_result[0].data.artists.items.forEach((item, field_number) => {
                     if (field_number <= 5) {
                         obj_sub.field_data += `Name: **${item.name}** ✦ Genres: **${obj_sub.genres_switch}** ✦[** Artist Profile **](${item.external_urls.spotify}) \n`
                     };
                 });
-                obj_sub.embed_data.embed.thumbnail.url = obj_sub.image_switch
+
+                if (search_result[0].data.artists.items[0] == undefined) {
+                    obj_sub.field_data = "No results!";
+                    obj_sub.embed_data.embed.thumbnail.url = "https://emilia-tan.s-ul.eu/wEyFBMYi";
+                } else {
+                    obj_sub.embed_data.embed.thumbnail.url = search_result[0].data.artists.items[0].images[0].url
+                }
+
                 obj_sub.embed_data.embed.description = obj_sub.field_data;
 
                 await react_listener(obj_sub);
@@ -145,19 +148,20 @@ module.exports.main = async function(obj_sub) {
 
             async function playlist_field_creator(obj_sub) {
 
-                if (search_result[0].data.playlists.items[0].images[0] == undefined) {
-                    obj_sub.image_switch = "https://emilia-tan.s-ul.eu/wEyFBMYi";
-                } else {
-                    obj_sub.image_switch = search_result[0].data.playlists.items[0].images[0].url
-                }
-
                 obj_sub.field_data = ""
                 await search_result[0].data.playlists.items.forEach((item, field_number) => {
                     if (field_number <= 5) {
                         obj_sub.field_data += `Name: ** ${item.name}** ✦ Tracks: ** ${item.tracks.total}** ✦ Owner: [** ${item.owner.display_name} **](${item.owner.external_urls.spotify}) ✦[** Playlist Link **](${item.external_urls.spotify}) \n`
                     };
                 });
-                obj_sub.embed_data.embed.thumbnail.url = obj_sub.image_switch
+
+                if (search_result[0].data.playlists.items[0] == undefined) {
+                    obj_sub.field_data = "No results!";
+                    obj_sub.embed_data.embed.thumbnail.url = "https://emilia-tan.s-ul.eu/wEyFBMYi";
+                } else {
+                    obj_sub.embed_data.embed.thumbnail.url = search_result[0].data.playlists.items[0].images[0].url
+                }
+
                 obj_sub.embed_data.embed.description = obj_sub.field_data;
 
                 await react_listener(obj_sub);
@@ -165,19 +169,20 @@ module.exports.main = async function(obj_sub) {
 
             async function track_field_creator(obj_sub) {
 
-                if (search_result[0].data.tracks.items[0].album.images[0] == undefined) {
-                    obj_sub.image_switch = "https://emilia-tan.s-ul.eu/wEyFBMYi";
-                } else {
-                    obj_sub.image_switch = search_result[0].data.tracks.items[0].album.images[0].url
-                }
-
                 obj_sub.field_data = ""
                 await search_result[0].data.tracks.items.forEach((item, field_number) => {
                     if (field_number <= 5) {
                         obj_sub.field_data += `Name: ** ${item.name}** ✦ Artist: [** ${item.artists[0].name} **](${item.artists[0].external_urls.spotify}) ✦[** Track Link **](${item.external_urls.spotify}) \n`
                     };
                 });
-                obj_sub.embed_data.embed.thumbnail.url = obj_sub.image_switch
+
+                if (search_result[0].data.tracks.items[0] == undefined) {
+                    obj_sub.field_data = "No results!";
+                    obj_sub.embed_data.embed.thumbnail.url = "https://emilia-tan.s-ul.eu/wEyFBMYi";
+                } else {
+                    obj_sub.embed_data.embed.thumbnail.url = search_result[0].data.tracks.items[0].album.images[0].url
+                }
+
                 obj_sub.embed_data.embed.description = obj_sub.field_data;
 
                 await react_listener(obj_sub);
@@ -209,22 +214,22 @@ module.exports.main = async function(obj_sub) {
                         switch (user_reaction.emoji.name) {
                             case '💿':
                                 content_type = "Album"
-                                await message_creator(obj_sub)
+                                message_creator(obj_sub)
                                 user_reaction.remove(obj_sub.dc_msg.author.id);
                                 break;
                             case '🎤':
                                 content_type = "Artist"
-                                await message_creator(obj_sub)
+                                message_creator(obj_sub)
                                 user_reaction.remove(obj_sub.dc_msg.author.id);
                                 break;
                             case '🎵':
                                 content_type = "Track"
-                                await message_creator(obj_sub)
+                                message_creator(obj_sub)
                                 user_reaction.remove(obj_sub.dc_msg.author.id);
                                 break;
                             case '🗒️':
                                 content_type = "Playlist"
-                                await message_creator(obj_sub)
+                                message_creator(obj_sub)
                                 user_reaction.remove(obj_sub.dc_msg.author.id);
                                 break;
                             case '❌':
@@ -233,11 +238,8 @@ module.exports.main = async function(obj_sub) {
                         };
                     });
 
-
             };
         };
-        if (i == 0) {
-            message_creator()
-        }
+        message_creator()
     };
 };
