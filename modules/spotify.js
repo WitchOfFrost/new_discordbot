@@ -98,7 +98,6 @@ module.exports.main = async function(obj_sub) {
             };
 
             async function album_field_creator(obj_sub) {
-                console.log(search_result[0].data.albums)
                 obj_sub.field_data = ""
                 await search_result[0].data.albums.items.forEach((item, field_number) => {
                     if (field_number <= 5) {
@@ -210,7 +209,6 @@ module.exports.main = async function(obj_sub) {
             };
         };
         if (i == 0) {
-            console.log("running meSsage")
             message_creator()
         }
     };
