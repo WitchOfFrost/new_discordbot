@@ -6,7 +6,7 @@ const module_index = require("./../module_index.js")
 module.exports.help = async function(obj_sub) {
 
     switch (obj_sub.dc_args[1]) {
-        case undefined:
+        default:
             embed_data_help = {
                 embed: {
                     title: strings.help_strings.help_title,

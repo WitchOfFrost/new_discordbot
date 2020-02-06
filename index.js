@@ -20,6 +20,7 @@ dc_client.on('message', async dc_msg => {
 
     switch (dc_args[0]) {
         case `${config.bot_config.prefix}color`:
+        case `${config.bot_config.prefix}colour`:
             obj_sub = { dc_args: dc_args, dc_msg: dc_msg, dc_client: dc_client }
             module_index.util_loader.color(obj_sub)
             break;

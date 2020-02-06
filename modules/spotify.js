@@ -82,7 +82,11 @@ module.exports.main = async function(obj_sub) {
                 embed: {
                     title: `Top 5 Results for ${content_type}s searching ${obj_sub.dc_args.slice(obj_sub.start_arg).join(" ")}`,
                     color: 1947988,
-                    thumbnail: { url: "" }
+                    thumbnail: { url: "" },
+                    footer: {
+                        icon_url: "https://unlimitedg.s-ul.eu/9LsVGplw",
+                        text: "Data by Spotify"
+                    }
                 }
             };
 
@@ -242,7 +246,6 @@ module.exports.main = async function(obj_sub) {
                                 break;
                         };
                     });
-
             };
         };
         message_creator()
