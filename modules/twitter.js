@@ -36,10 +36,12 @@ twitter_api = axios.create({ baseURL: 'https://api.twitter.com/1.1/', headers: {
 
 module.exports.search = async function (obj_sub) {
 
-    let res = await twitter_api.get(`search/tweets.json?q=${obj_sub.dc_args.slice(1)}&possibly_sensitive=false`).catch(err => console.log(err))
+    let encode_this = encodeURIComponent(obj_sub.dc_args.slice(1))
+    let encode_uri = `search/tweets.json?q=` + encode_this + `&possibly_sensitive=false`
+    let res = await twitter_api.get(encode_uri).catch(err => console.log(err))
+
+    console.log(encode_uri)
 
     console.log(res.data.statuses[i])
     obj_sub.dc_msg.channel.send({ embed: { title: `Tweet by: ${res.data.statuses[i].user.name}`, thumbnail: { url: res.data.statuses[i].user.profile_image_url }, description: res.data.statuses[i].text, color: 565481, footer: { icon_url: "https://emilia-tan.s-ul.eu/CmlAx66s", text: "Twitter" } } })
-
-
 };
