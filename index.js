@@ -1,4 +1,5 @@
-const config = require("./config.json");
+const json_reload = require('self-reload-json');
+const config = new json_reload("./config.json");
 const Discord = require("discord.js");
 const dc_client = new Discord.Client();
 const module_index = require("./module_index.js")
@@ -10,7 +11,9 @@ dc_client.on('ready', state => {
 dc_client.on('message', async dc_msg => {
 
     // Message Logs
-    console.log(`[${new Date(Date.now()).toLocaleString()}] ${dc_msg.guild.id} - ${dc_msg.member.user.tag}: ${dc_msg}`);
+    if (config.bot_config.debug == "true") {
+        console.log(`[${new Date(Date.now()).toLocaleString()}] ${dc_msg.guild.id} - ${dc_msg.member.user.tag}: ${dc_msg}`);
+    } else { }
 
     // Message Guards
     if (dc_msg.author.bot) return;
