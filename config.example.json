@@ -1,0 +1,21 @@
+{
+    "bot_config": {
+        "token": "",
+        "owner": "",
+        "prefix": "e!",
+        "debug": "false",
+        "allow_edit": "false"
+    },
+    "database_config": {
+        "username": "",
+        "password:": "",
+        "url": "",
+        "db": ""
+    },
+    "api_config": {
+        "spotify": {
+            "client_id": "",
+            "client_secret": ""
+        }
+    }
+}

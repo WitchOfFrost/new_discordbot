@@ -40,9 +40,14 @@ dc_client.on('message', async dc_msg => {
             module_index.help_loader.help(obj_sub)
             break;
 
-        case `${config.bot_config.prefix}exec`:
+        case `${config.bot_config.prefix}owner.exec`:
             obj_sub = { dc_args: dc_args, dc_msg: dc_msg }
             module_index.owner_commands_loader.bash_execute(obj_sub)
+            break;
+
+        case `${config.bot_config.prefix}owner.config`:
+            obj_sub = { dc_args: dc_args, dc_msg: dc_msg }
+            module_index.owner_commands_loader.owner_config(obj_sub)
             break;
 
         case (`${config.bot_config.prefix}cat`):
