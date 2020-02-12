@@ -18,6 +18,7 @@ dc_client.on('message', async dc_msg => {
     // Message Guards
     if (dc_msg.author.bot) return;
     var dc_args = await dc_msg.content.split(/\s+/g);
+    var link_finder = await dc_msg.content.split('/');
 
     // Switch Code
 
@@ -102,9 +103,15 @@ dc_client.on('message', async dc_msg => {
             obj_sub = { dc_args: dc_args, dc_msg: dc_msg }
             module_index.util_loader.urban(obj_sub)
             break;
+
+        case (`${config.bot_config.prefix}twitter`):
+        case (`${config.bot_config.prefix}t`):
+            obj_sub = { dc_args: dc_args, dc_msg: dc_msg }
+            module_index.twitter_loader.search(obj_sub)
+            break;
     };
 
-
+    // Link Scanner
 
 });
 dc_client.login(config.bot_config.token);

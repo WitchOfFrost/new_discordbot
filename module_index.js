@@ -7,3 +7,5 @@ exports.image_loader = require('./modules/image.js');
 exports.speedrun_loader = require('./modules/speedrun.js');
 exports.gdq_loader = require('./modules/gdq.js');
 exports.spotify_loader = require('./modules/spotify.js');
+exports.twitter_loader = require('./modules/twitter.js');
+exports.link_loader = require('./modules/link.js');

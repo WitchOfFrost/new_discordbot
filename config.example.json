@@ -16,6 +16,10 @@
         "spotify": {
             "client_id": "",
             "client_secret": ""
+        },
+        "twitter": {
+            "client_id": "",
+            "client_secret": ""
         }
     }
 }
