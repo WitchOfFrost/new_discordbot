@@ -43,6 +43,7 @@ module.exports.search = async function (obj_sub) {
     if (res.data.statuses[i] == undefined) {
         obj_sub.dc_msg.channel.send("No tweet found!")
     } else {
-        obj_sub.dc_msg.channel.send({ embed: { title: `Tweet by: @${res.data.statuses[i].user.screen_name}`, url: `https://twitter.com/${res.data.statuses[i].user.screen_name}/status/${res.data.statuses[i].id_str}`, thumbnail: { url: res.data.statuses[i].user.profile_image_url }, description: res.data.statuses[i].full_text, color: 565481, footer: { icon_url: "https://emilia-tan.s-ul.eu/CmlAx66s", text: "Twitter" } } });
+        let time = res.data.statuses[i].created_at.split(" ")
+        obj_sub.dc_msg.channel.send({ embed: { title: `Tweet by: @${res.data.statuses[i].user.screen_name}`, url: `https://twitter.com/${res.data.statuses[i].user.screen_name}/status/${res.data.statuses[i].id_str}`, thumbnail: { url: res.data.statuses[i].user.profile_image_url }, description: res.data.statuses[i].full_text, color: 565481, footer: { icon_url: "https://emilia-tan.s-ul.eu/CmlAx66s", text: `Twitter | ${time[2]} ${time[1]} ${time[5]} - ${time[3]} GMT` } } });
     };
 };
