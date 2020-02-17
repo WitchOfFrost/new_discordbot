@@ -17,14 +17,16 @@
         "urban_title": "The Urban Dictionary. The place where you find words that you never knew existed.",
         "urban_desc": "Gives you the definition for a word or phrase from Urbandictionary.\n\nUsage: `%prefix%urban [search term]`",
         "spotify_title": "Search Spotify. As simple as that.",
-        "spotify_desc": "Shows you the top 5 results for Songs, Artists, Albums and Playlists.\n\nUsage: `%prefix%spotify [search term]`\n\nEmote Menu:\n\n💿‎‎‎‎ ‎ ‎ ‎– ‎ ‎ ‎**Albums**\n\n🎤 ‎ ‎ – ‎ ‎ ‎‎**Artists**\n\n🎵 ‎ ‎ – ‎ ‎ ‎‎**Songs**\n\n🗒️ ‎ ‎ – ‎ ‎ ‎‎**Playlists**\n\n❌ ‎ ‎ – ‎ ‎ ‎‎**Close**"
+        "spotify_desc": "Shows you the top 5 results for Songs, Artists, Albums and Playlists.\n\nUsage: `%prefix%spotify [search term]`\n\nAlias: `%prefix%s`\n\nEmote Menu:\n\n💿‎‎‎‎ ‎ ‎ ‎– ‎ ‎ ‎**Albums**\n\n🎤 ‎ ‎ – ‎ ‎ ‎‎**Artists**\n\n🎵 ‎ ‎ – ‎ ‎ ‎‎**Songs**\n\n🗒️ ‎ ‎ – ‎ ‎ ‎‎**Playlists**\n\n❌ ‎ ‎ – ‎ ‎ ‎‎**Close**",
+        "twitter_title": "Find all the stuff on your favorite 280 Character status website.",
+        "twitter_desc": "Search Twitter, use all the search operators you know and love. \n\nUsage: `%prefix%twitter [search term]`\n\nAlias: `%prefix%t`\n\n[Search operators](https://developer.twitter.com/en/docs/tweets/rules-and-filtering/overview/standard-operators)\n\nBlocked searches: **none**"
     },
 
     "command_strings": {
         "command_title": "Command List.",
         "command_desc": "Displays a list of all commands.",
         "utility_title": "1. Utility",
-        "utility_desc": "color, spotify",
+        "utility_desc": "color, spotify, twitter",
         "image_title": "2. Image",
         "image_desc": "cat, dog, fox, neko, hug, fluff, wag, kiss, pat, cuddle, poke, wallpaper, gecg, 8ball, slap",
         "nsfw_title": "3. NSFW",
