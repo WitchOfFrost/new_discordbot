@@ -3,7 +3,7 @@ var strings = new json_reload("./strings.json");
 const config = require('./../config.json');
 const module_index = require("./../module_index.js")
 
-module.exports.help = async function(obj_sub) {
+module.exports.help = async function (obj_sub) {
 
     switch (obj_sub.dc_args[1]) {
         default:
@@ -92,6 +92,7 @@ module.exports.help = async function(obj_sub) {
             }
             break;
         case (`spotify`):
+        case (`s`):
             embed_data_help = {
                 embed: {
                     title: strings.help_strings.spotify_title,
@@ -100,31 +101,41 @@ module.exports.help = async function(obj_sub) {
                 }
             }
             break;
+        case (`twitter`):
+        case (`t`):
+            embed_data_help = {
+                embed: {
+                    title: strings.help_strings.twitter_title,
+                    description: module_index.globalfunctions_loader.str_replace("%prefix%", config.bot_config.prefix, strings.help_strings.twitter_desc),
+                    color: 565481
+                }
+            }
+            break;
     };
     obj_sub.dc_msg.channel.send(embed_data_help);
 };
 
-module.exports.commands = async function(obj_sub) {
+module.exports.commands = async function (obj_sub) {
     obj_sub.dc_msg.channel.send({
         embed: {
             title: strings.command_strings.command_title,
             description: strings.command_strings.command_desc,
             fields: [{
-                    name: strings.command_strings.utility_title,
-                    value: strings.command_strings.utility_desc
-                },
-                {
-                    name: strings.command_strings.image_title,
-                    value: strings.command_strings.image_desc
-                },
-                {
-                    name: strings.command_strings.nsfw_title,
-                    value: strings.command_strings.nsfw_desc
-                },
-                {
-                    name: strings.command_strings.misc_title,
-                    value: strings.command_strings.misc_desc
-                }
+                name: strings.command_strings.utility_title,
+                value: strings.command_strings.utility_desc
+            },
+            {
+                name: strings.command_strings.image_title,
+                value: strings.command_strings.image_desc
+            },
+            {
+                name: strings.command_strings.nsfw_title,
+                value: strings.command_strings.nsfw_desc
+            },
+            {
+                name: strings.command_strings.misc_title,
+                value: strings.command_strings.misc_desc
+            }
             ]
         }
     });
