@@ -13,7 +13,7 @@ dc_client.on('message', async dc_msg => {
     // Message Logs
     if (config.bot_config.debug == "true") {
         console.log(`[${new Date(Date.now()).toLocaleString()}] ${dc_msg.guild.id} - ${dc_msg.member.user.tag}: ${dc_msg}`);
-    } else { }
+    } else {}
 
     // Message Guards
     if (dc_msg.author.bot) return;
@@ -57,6 +57,7 @@ dc_client.on('message', async dc_msg => {
         case (`${config.bot_config.prefix}cat`):
         case (`${config.bot_config.prefix}dog`):
         case (`${config.bot_config.prefix}fox`):
+        case (`${config.bot_config.prefix}shibe`):
             obj_sub = { dc_args: dc_args, dc_msg: dc_msg }
             module_index.image_loader.animals(obj_sub)
             break;
