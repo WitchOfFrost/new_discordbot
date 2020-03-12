@@ -18,6 +18,10 @@ module.exports.animals = async function(obj_sub) {
             animal_embed_data.embed.title = "*screams* 🦊";
             animal_embed_data.embed.image.url = await module_index.globalfunctions_loader.animal_api("https://randomfox.ca/floof", "image").catch(err => { console.log(err) })
             break;
+        case (obj_sub.dc_args[0] = `${config.bot_config.prefix}shibe`):
+            animal_embed_data.embed.title = "Cute Shibe";
+            animal_embed_data.embed.image.url = await module_index.globalfunctions_loader.animal_api("http://shibe.online/api/shibes?count=1&urls=true", "0").catch(err => { console.log(err) })
+            break;
     };
     obj_sub.dc_msg.channel.send(animal_embed_data).catch(err => { console.log(err) })
 };
